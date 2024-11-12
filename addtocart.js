@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#cartItem').innerHTML = "Seu carrinho está vazio";
             document.querySelector('#total').innerHTML = "R$ " + 0 + ".00";
         } else {
-            document.querySelector('#cartItem').innerHTML = cart.map((items) => {
+            document.querySelector('#cartItem').innerHTML = cart.map((items, index) => {
                 var { name, finalPrice, image } = items;
-                total = total + finalPrice;
+                total += finalPrice;
                 document.querySelector('#total').innerHTML = "R$ " + total.toFixed(2);
                 return (
                     `<div class='cart-item'>
@@ -48,9 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <p style ='font-size:12px;'>${name}</p>
                     <h2 style='font-size:15px;'>R$${finalPrice.toFixed(2)}</h2>` +
-                    "<i class='fa-solid fa-trash' onclick='delElement(" + (j++) + ")'></i></div>"
+                    `<i class='fa-solid fa-trash' onclick='delElement(${index})'></i></div>`
                 )
             }).join('');
         }
     }
+
+    finalizePurchase = () => {
+        alert('Compra finalizada! Total: R$ ' + document.querySelector('#total').textContent);
+    }
+
+    // Inicializa a exibição do carrinho
+    displaycart();
 });
