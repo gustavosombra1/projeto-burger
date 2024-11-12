@@ -15,6 +15,13 @@
       display: flex;
       flex-direction: column;
     }
+    .button-group {
+      display: flex;
+      gap: 10px; /* Adicione essa linha para espaçar os botões */
+    }
+    .button-group button {
+      margin-right: 10px; /* Ajusta o espaçamento */
+    }
   </style>
 </head>
 <body>
@@ -53,7 +60,13 @@
     </div>
     <button type="submit">Cadastrar Produto</button>
   </form>
-  <div id="productsContainer"></div>
+  <div id="productsContainer">
+    <!-- Exemplo de como os botões devem estar estruturados -->
+    <div class="button-group">
+      <button type="button" onclick="editProduct()">Editar</button>
+      <button type="button" onclick="deleteProduct()">Excluir</button>
+    </div>
+  </div>
   <script src="admin.js"></script>
 </body>
 </html>
