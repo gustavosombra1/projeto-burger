@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma de Pagamento</title>
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+
+    <h2>Escolha a Forma de Pagamento</h2>
+    <div class="form-container">
+        <div class="form-group">
+            <label for="payment-method">Forma de Pagamento</label>
+            <select id="payment-method" onchange="displayPaymentFields()">
+                <option value="">Selecione</option>
+                <option value="cartao">Cartão</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+        </div>
+
+        <!-- Campos para pagamento com cartão -->
+        <div id="card-fields" style="display: none;">
+            <div class="form-group">
+                <label for="card-name">Nome Completo</label>
+                <input type="text" id="card-name">
+            </div>
+            <div class="form-group">
+                <label for="card-number">Número do Cartão</label>
+                <input type="text" id="card-number" maxlength="16">
+            </div>
+            <div class="form-group">
+                <label for="card-cvc">Código de Segurança</label>
+                <input type="text" id="card-cvc" maxlength="3">
+            </div>
+        </div>
+
+        <!-- Campos para pagamento em dinheiro -->
+        <div id="cash-fields" style="display: none;">
+            <div class="form-group">
+                <label for="cash-amount">Quantia que vai pagar</label>
+                <input type="number" id="cash-amount" min="0" step="0.01">
+            </div>
+            <div id="change-message"></div>
+        </div>
+
+        <!-- Campos para pagamento com Pix -->
+        <div id="pix-fields" style="display: none;">
+            <button type="button" onclick="generatePixCode()">Gerar Código Pix</button>
+            <div id="pix-code">Código Pix: <span id="pix-code-text"></span></div>
+        </div>
+
+        <button type="button" onclick="confirmPayment()">Confirmar Pagamento</button>
+    </div>
+
+    <script src="payment.js">
+
+    </script>
+</body>
+</html>

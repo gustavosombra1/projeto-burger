@@ -2,31 +2,42 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 18px;
+    background-color: #FFFCF2;
+}
+
+.geral{
+    display: flex;
+    grid-template-columns: 1fr 2fr;
+    gap: 100px;
 }
 body {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    align-items: flex-start; /* Alinhar o conteúdo ao topo e à esquerda */
+    margin: 20px;
 }
+
 .header {
-    height: 80px;
-    width: 70%;
-    background-color: rgb(6, 111, 15);
+    width: 100%; /* Defina a largura para 100% */
+    background-color: #DA2026;
     border-radius: 3px;
-    margin: 30px 0px;
+    margin: 30px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px;
 }
+
 .header .logo {
     font-size: 30px;
     font-weight: bold;
-    color: white;
+    color: #FFFCF2;
+    margin-left: 0; /* Garantir que a logo fique colada à esquerda */
+    background-color: #DA2026;
 }
+
 .cart {
     display: flex;
     background-color: white;
@@ -36,9 +47,11 @@ body {
     border-radius: 3px;
     width: 80px;
 }
+
 .fa-solid {
     color: rgb(218, 32, 38);
 }
+
 .cart p {
     height: 22px;
     width: 22px;
@@ -48,22 +61,43 @@ body {
     border-radius: 22px;
     background-color: rgb(218, 32, 38);
     color: white;
+
 }
 
 .container {
     display: flex;
-    width: 70%;
+    flex-direction: row; /* Alinhe a imagem e o conteúdo em linha */
+    width: 100%; /* Ajuste a largura conforme necessário */
     margin-bottom: 30px;
+    align-items: flex-start; /* Alinhar ao topo */
 }
+
+img {
+    margin-right: 20px; /* Espaçamento entre a imagem e o conteúdo */
+    max-width: 300px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+}
+
 #root {
     width: 60%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
 }
-.sidebar { width: 40%; border-radius: 5px; background-color: #eee; margin-left: 20px; padding: 15px; text-align: center; max-height: 400px; /* Defina uma altura máxima para o contêiner */ overflow-y: auto; }/* Adicione a barra de rolagem vertical */
+
+.sidebar {
+    width: 40%;
+    border-radius: 5px;
+    background-color: #eee;
+    margin-left: 20px;
+    padding: 15px;
+    text-align: center;
+    max-height: 400px; /* Defina uma altura máxima para o contêiner */
+    overflow-y: auto; /* Adicione a barra de rolagem vertical */
+}
+
 .head {
-    background-color: rgb(6, 111, 15);
+    background-color: #DA2026;
     border-radius: 3px;
     height: 40px;
     padding: 10px;
@@ -72,6 +106,7 @@ body {
     display: flex;
     align-items: center;
 }
+
 .foot {
     display: flex;
     justify-content: space-between;
@@ -79,35 +114,32 @@ body {
     padding: 10px 0px;
     border-top: 1px solid #333;
 }
-.button {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0px;
-    padding: 10px 0px;
-    border-top: 1px solid #333;
-}
+
 .button {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #DA2026;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
+
 .button:hover {
-    background-color: #45a049;
+    background-color: #dafa65;;
 }
+
 .box {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid rgb(6, 111, 15);
+    border: 1px solid #500404;
     border-radius: 5px;
-    padding: 15px;
+    padding: 5vh;
     height: 300px; /* Defina uma altura fixa para os cards */
     width: 100%;   /* Mantenha a largura dos cards */
+    margin-bottom: 10vh;
 }
 
 .img-box {
@@ -138,8 +170,11 @@ body {
 
 h2 {
     font-size: 20px;
-    color: rgb(6, 111, 15);
+    color: black;
+    
+    
 }
+
 button {
     width: 100%;
     position: relative;
@@ -150,11 +185,24 @@ button {
     cursor: pointer;
     color: white;
 }
+
 button:hover {
-    background-color: rgb(6, 111, 15);
+    background-color: #500404;
+    color: white;
+    
 }
+
 .cart-item {
-     display: flex; align-items: center; justify-content: space-between; padding: 10px; background-color: white; border-bottom: 1px solid #aaa; border-radius: 3px; margin: 10px 10px}
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #EEEEEE;
+    border-bottom: 1px solid #aaa;
+    border-radius: 3px;
+    margin: 10px 10px;
+}
+
 .row-img {
     width: 50px;
     height: 50px;
@@ -164,15 +212,18 @@ button:hover {
     align-items: center;
     justify-content: center;
 }
+
 .rowimg {
     max-width: 43px;
     max-height: 43px;
     border-radius: 50%;
 }
+
 .fa-trash:hover {
     cursor: pointer;
     color: rgb(6, 111, 15);
 }
+
 #finalizeButton {
     background-color: rgb(218, 32, 38);
     color: white;
@@ -182,17 +233,60 @@ button:hover {
     cursor: pointer;
     width: 100%;
 }
+
 #finalizeButton:hover {
-    background-color: rgb(6, 111, 15);
+    background-color: #500404;
+    color: white;
 }
 
-/* Opcional: Estilo para a barra de rolagem */ 
-.sidebar::-webkit-scrollbar { 
-    width: 8px; 
-} 
-.sidebar::-webkit-scrollbar-thumb { 
-    background: #ccc; border-radius: 4px; 
-} 
+/* Opcional: Estilo para a barra de rolagem */
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
 .sidebar::-webkit-scrollbar-thumb:hover {
-     background: #888
-    }
+    background: #888;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px; /* Adicione essa linha para espaçar os botões */
+}
+
+.button-group button {
+    margin-right: 10px; /* Ajusta o espaçamento */
+}
+
+.btn {
+    margin-bottom: 5px;
+}
+
+#cartItem, h3, h2{
+    background-color: #EEEEEE;
+}
+.foot{
+    background-color: #EEEEEE;  
+}
+.row-img{
+    padding: 3vh;
+}
+.rowimg{
+    margin: 7vh;
+    transform: scale(1.6);
+}

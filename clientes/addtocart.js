@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const products = JSON.parse(localStorage.getItem('products')) || [];
     let i = 0;
+    
+    // Carregar o carrinho do localStorage ou inicializar um carrinho vazio
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
     document.querySelector('#root').innerHTML = products.map((item) => {
         var { name, description, finalPrice, image } = item;
         return (
@@ -15,18 +19,23 @@ document.addEventListener('DOMContentLoaded', () => {
             "<button onclick='addtocart(" + (i++) + ")'>Adicionar ao carrinho</button>" +
             `</div>
             </div>`
-        )
+        );
     }).join('');
 
-    var cart = [];
+    // Atualizar o localStorage sempre que o carrinho é modificado
+    function updateLocalStorage() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
 
     addtocart = (a) => {
         cart.push({ ...products[a] });
+        updateLocalStorage();
         displaycart();
     }
 
     delElement = (a) => {
         cart.splice(a, 1);
+        updateLocalStorage();
         displaycart();
     }
 
@@ -49,14 +58,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p style ='font-size:12px;'>${name}</p>
                     <h2 style='font-size:15px;'>R$${finalPrice.toFixed(2)}</h2>` +
                     `<i class='fa-solid fa-trash' onclick='delElement(${index})'></i></div>`
-                )
+                );
             }).join('');
         }
     }
 
     finalizePurchase = () => {
-        alert('Compra finalizada! Total: R$ ' + document.querySelector('#total').textContent);
+        const total = parseFloat(document.querySelector('#total').textContent.replace('R$', '').trim());
+    
+        if (total > 0) {
+            // Salva o valor total e o carrinho separadamente no localStorage
+            localStorage.setItem('totalCompra', total.toFixed(2));
+            localStorage.setItem('cart', JSON.stringify(cart));  // Armazena o carrinho no localStorage
+            console.log("Carrinho salvo:", cart);
+            
+            // Confirma que os produtos ainda estão no localStorage
+            const productsCheck = JSON.parse(localStorage.getItem('products'));
+            console.log("Produtos no localStorage antes de redirecionar:", productsCheck);
+    
+            // Redireciona para a página de pagamento
+            window.location.href = '../pagamento/payment.html';
+        } else {
+            alert("Seu carrinho está vazio!");
+        }
     }
+    
 
     // Inicializa a exibição do carrinho
     displaycart();

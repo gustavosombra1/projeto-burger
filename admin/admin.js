@@ -70,18 +70,28 @@ function updateProfit() {
 function displayProducts() {
   const products = JSON.parse(localStorage.getItem('products')) || [];
   document.getElementById('productsContainer').innerHTML = products.map((product, index) =>
-    `<div>
-      <h3>${product.name}</h3>
-      <p>${product.description}</p>
-      <p>${product.ingredients.map((ing) => `<span>${ing.name} - R$ ${ing.price.toFixed(2)}</span>`).join(', ')}</p>
-      <p>Preço Final: R$ ${parseFloat(product.finalPrice).toFixed(2)}</p>
-      <p>Lucro: R$ ${parseFloat(product.profit).toFixed(2)}</p>
-      <img src="${product.image}" alt="${product.name}" style="width: 100px; height: 100px;">
-      <button onclick="editProduct(${index})">Editar</button>
-      <button onclick="deleteProduct(${index})">Excluir</button>
-    </div>`
+      `<div class="product">
+          <h3>${product.name}</h3>
+          <p>${product.description}</p>
+          <p>${product.ingredients.map((ing) => `<span>${ing.name} - R$ ${ing.price.toFixed(2)}</span>`).join(', ')}</p>
+          <p>Preço Final: R$ ${parseFloat(product.finalPrice).toFixed(2)}</p>
+          <p>Lucro: R$ ${parseFloat(product.profit).toFixed(2)}</p>
+          <img src="${product.image}" alt="${product.name}" style="width: 100px; height: 100px;">
+          <div>
+              <button class="btn" onclick="editProduct(${index})">Editar</button>
+              <button class="btn" onclick="deleteProduct(${index})">Excluir</button>
+          </div>
+      </div>`
   ).join('');
+
+  // Confirma que os produtos estão carregados corretamente
+  console.log("Produtos carregados no displayProducts:", products);
 }
+
+// Inicializa a listagem de produtos
+displayProducts();
+
+
 
 function editProduct(index) {
   const products = JSON.parse(localStorage.getItem('products')) || [];

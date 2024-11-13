@@ -1,0 +1,35 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFF8E1;
+    padding: 20px;
+}
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #DA2026;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: white;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input, select, button {
+    width: 100%;
+    padding: 8px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+#pix-code {
+    font-weight: bold;
+    color: #DA2026;
+    margin-top: 10px;
+    display: none;
+}
