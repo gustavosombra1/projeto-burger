@@ -1,6 +1,6 @@
 document.getElementById('productForm').addEventListener('submit', (e) => {
   e.preventDefault();
-  
+  //teste
   const finalPrice = parseFloat(document.getElementById('finalPrice').value);
   const profit = calculateProfit(ingredients, finalPrice);
   const image = document.getElementById('image').files[0];
